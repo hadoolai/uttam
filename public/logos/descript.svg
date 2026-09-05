@@ -1,0 +1,9 @@
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" rx="28" fill="#18181B"/>
+  <!-- Descript official multi-colored soundwave D logo -->
+  <g transform="translate(26, 26)">
+    <path d="M12 8H30C46.5685 8 60 21.4315 60 38C60 54.5685 46.5685 68 30 68H12V8Z" stroke="#22D3EE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 20H30C39.9411 20 48 28.0589 48 38C48 47.9411 39.9411 56 30 56H12V20Z" stroke="#F43F5E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 32H30C33.3137 32 36 34.6863 36 38C36 41.3137 33.3137 44 30 44H12V32Z" fill="#FACC15"/>
+  </g>
+</svg>

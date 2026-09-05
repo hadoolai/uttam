@@ -1,0 +1,6 @@
+{
+  "name": "HadoolAI",
+  "description": "Honest reviews, comparisons, rankings, and tutorials to help you discover and choose the best AI tools and software with HadoolAI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

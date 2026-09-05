@@ -1,0 +1,10 @@
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" rx="28" fill="#0C1017"/>
+  <!-- Midjourney iconic sailboat geometry -->
+  <g>
+    <path d="M57 24L28 72H57V24Z" fill="#FFFFFF" fill-opacity="0.95"/>
+    <path d="M63 34L92 72H63V34Z" fill="#FFFFFF" fill-opacity="0.75"/>
+    <path d="M22 78L34 94H86L98 78H22Z" fill="#FFFFFF" fill-opacity="0.95"/>
+    <path d="M40 82L46 90H74L80 82H40Z" fill="#0C1017"/>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" rx="28" fill="#121212"/>
+  <!-- Pika official star / spark geometric brand mark -->
+  <path d="M60 22C60 42 78 60 98 60C78 60 60 78 60 98C60 78 42 60 22 60C42 60 60 42 60 22Z" fill="#F8FAFC"/>
+  <circle cx="60" cy="60" r="7" fill="#6366F1"/>
+</svg>

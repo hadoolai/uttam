@@ -1,0 +1,7 @@
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" rx="28" fill="#181126"/>
+  <!-- PixVerse geometric P and camera aperture mark -->
+  <path d="M36 32H64C74 32 82 40 82 50C82 60 74 68 64 68H48V88H36V32Z" fill="#A855F7"/>
+  <rect x="48" y="44" width="16" height="12" rx="3" fill="#FFFFFF"/>
+  <polygon points="76,68 92,84 84,92 68,76" fill="#EC4899"/>
+</svg>

@@ -1,0 +1,42 @@
+# Netlify configuration for HadoolAI
+# Website: https://hadoolai.co.in
+# Application: HadoolAI AI Assistant & Independent AI Reviews Hub
+
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Functions directory for serverless Gemini chat endpoint
+[functions]
+  directory = "netlify/functions"
+
+# REQUIRED ENVIRONMENT VARIABLES (Set in Netlify Dashboard > Site settings > Environment variables):
+# - GEMINI_API_KEY: Your official Google Gemini API Key for server-side Google Search grounding and AI responses.
+#                   Never commit secret API keys into this file or repository.
+# - APP_URL: https://hadoolai.co.in (The canonical production site URL)
+
+# Route API requests to Netlify serverless function
+[[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200
+
+# SPA routing redirect rule: rewrites all client requests to index.html with 200 OK
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security and caching headers for optimal performance and privacy
+[[headers]]
+  for = "/*"
+  [headers.values]
+  X-Frame-Options = "SAMEORIGIN"
+  X-Content-Type-Options = "nosniff"
+  X-XSS-Protection = "1; mode=block"
+  Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"

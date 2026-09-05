@@ -1,0 +1,9 @@
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" rx="28" fill="#0D0D11"/>
+  <!-- Luma Dream Machine logo mark -->
+  <g fill="#FFFFFF">
+    <path d="M32 36H44V84H32V36Z"/>
+    <path d="M32 72H88V84H32V72Z"/>
+    <circle cx="76" cy="46" r="10" fill="#6366F1"/>
+  </g>
+</svg>

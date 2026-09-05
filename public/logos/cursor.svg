@@ -1,0 +1,15 @@
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" rx="28" fill="#090A0F"/>
+  <!-- Cursor 3D dark isometric cube -->
+  <g transform="translate(60, 60) scale(1.1)">
+    <!-- Top Face -->
+    <path d="M0 -32 L27.7 -16 L0 0 L-27.7 -16 Z" fill="#3E424B"/>
+    <!-- Right Face -->
+    <path d="M0 0 L27.7 -16 V16 L0 32 Z" fill="#2B2D34"/>
+    <!-- Left Face -->
+    <path d="M-27.7 -16 L0 0 V32 L-27.7 16 Z" fill="#1C1D22"/>
+    <!-- Inner highlights and facets -->
+    <path d="M0 -30 L25.5 -15.3 L0 -0.5 L-25.5 -15.3 Z" stroke="#5C606C" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M0 0 V30" stroke="#454954" stroke-width="1.5"/>
+  </g>
+</svg>
