@@ -33,6 +33,11 @@ export const HADOOLAI_OVERVIEW = {
   ],
   majorGuides: [
     {
+      title: 'Facebook Monetization 2026: The Complete Creator Guide (Content Monetization, Reels, Qualified Views & Meta Policy)',
+      path: '/blog/facebook-monetization-2026',
+      summary: 'Complete guide to Meta unified Content Monetization in 2026: qualified view metrics, Reels earnings, AI content policy, eligibility criteria, and a 30-day creator growth roadmap.',
+    },
+    {
       title: 'Best AI Writing Tools 2026: Complete Guide for Blogs, SEO, Students, & Business',
       path: '/blog/best-ai-writing-tools-2026',
       summary: 'Comprehensive 10-tool benchmark covering ChatGPT, Claude, Gemini, Jasper, Copy.ai, Writesonic, Notion AI, Sudowrite, Rytr, and QuillBot.',
