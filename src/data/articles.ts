@@ -1,10 +1,12 @@
 import { Article } from './types';
+import { youtubeReviewArticle } from './youtubeReviewArticle';
 import { facebookMonetizationArticle } from './facebookMonetizationArticle';
 import { bestAiTextToVideoArticle } from './bestAiTextToVideoArticle';
 import { bilibiliAppReviewArticle } from './bilibiliAppReviewArticle';
 import { topUsaTechTrendsArticle } from './topUsaTechTrendsArticle';
 
 export const articlesData: Article[] = [
+  youtubeReviewArticle,
   facebookMonetizationArticle,
   topUsaTechTrendsArticle,
   bilibiliAppReviewArticle,

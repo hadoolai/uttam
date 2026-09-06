@@ -33,6 +33,11 @@ export const HADOOLAI_OVERVIEW = {
   ],
   majorGuides: [
     {
+      title: 'YouTube Review 2026: Monetization, Shorts, Earnings & Complete Guide',
+      path: '/blog/youtube-review-2026',
+      summary: 'Comprehensive 2026 guide to YouTube Partner Program (YPP), Shorts vs Watch Page revenue, AI content rules, reused content policies, and 90-day growth strategy.',
+    },
+    {
       title: 'Facebook Monetization 2026: The Complete Creator Guide (Content Monetization, Reels, Qualified Views & Meta Policy)',
       path: '/blog/facebook-monetization-2026',
       summary: 'Complete guide to Meta unified Content Monetization in 2026: qualified view metrics, Reels earnings, AI content policy, eligibility criteria, and a 30-day creator growth roadmap.',
