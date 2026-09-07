@@ -1,4 +1,5 @@
 import { Article } from './types';
+import { aiSeLongVideoKaiseBanayeArticle } from './aiSeLongVideoKaiseBanayeArticle';
 import { youtubeReviewArticle } from './youtubeReviewArticle';
 import { facebookMonetizationArticle } from './facebookMonetizationArticle';
 import { bestAiTextToVideoArticle } from './bestAiTextToVideoArticle';
@@ -6,6 +7,7 @@ import { bilibiliAppReviewArticle } from './bilibiliAppReviewArticle';
 import { topUsaTechTrendsArticle } from './topUsaTechTrendsArticle';
 
 export const articlesData: Article[] = [
+  aiSeLongVideoKaiseBanayeArticle,
   youtubeReviewArticle,
   facebookMonetizationArticle,
   topUsaTechTrendsArticle,

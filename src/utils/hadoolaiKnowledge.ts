@@ -33,6 +33,11 @@ export const HADOOLAI_OVERVIEW = {
   ],
   majorGuides: [
     {
+      title: 'AI Se Long Video Kaise Banaye? Best AI Video Generators 2026 – Complete Guide',
+      path: '/blog/ai-se-long-video-kaise-banaye',
+      summary: 'Complete guide to creating 5, 10, or 20-minute long-form AI videos for YouTube, documentaries, storytelling, scripts, scene breakdown, and monetization policies.',
+    },
+    {
       title: 'YouTube Review 2026: Monetization, Shorts, Earnings & Complete Guide',
       path: '/blog/youtube-review-2026',
       summary: 'Comprehensive 2026 guide to YouTube Partner Program (YPP), Shorts vs Watch Page revenue, AI content rules, reused content policies, and 90-day growth strategy.',
