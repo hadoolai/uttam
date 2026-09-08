@@ -15,10 +15,20 @@
 #                   Never commit secret API keys into this file or repository.
 # - APP_URL: https://hadoolai.co.in (The canonical production site URL)
 
-# Route API requests to Netlify serverless function
+# Route API requests to Netlify serverless functions
 [[redirects]]
   from = "/api/chat"
   to = "/.netlify/functions/chat"
+  status = 200
+
+[[redirects]]
+  from = "/api/reviews"
+  to = "/.netlify/functions/reviews"
+  status = 200
+
+[[redirects]]
+  from = "/api/reviews-helpful"
+  to = "/.netlify/functions/reviews-helpful"
   status = 200
 
 # SPA routing redirect rule: rewrites all client requests to index.html with 200 OK

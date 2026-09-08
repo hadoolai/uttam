@@ -7,6 +7,7 @@ import { articlesData } from '../data/articles';
 import { ToolLogo } from '../components/ToolLogo';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { ViewerReviews } from '../components/ViewerReviews';
 import { Calendar, Clock, User, ArrowRight, Share2, Tag, Sparkles, BookOpen, ChevronDown, HelpCircle, CheckCircle2, RefreshCw } from 'lucide-react';
 import { SITE_URL } from '../utils/constants';
 
@@ -524,6 +525,9 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({
             </div>
           </div>
         )}
+
+        {/* Viewer Reviews & Comments Section - Production Supabase Integration */}
+        <ViewerReviews articleSlug={article.slug} articleTitle={article.title} />
       </div>
     </div>
   );

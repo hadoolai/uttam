@@ -5,6 +5,14 @@ import dotenv from 'dotenv';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI } from '@google/genai';
 import { searchHadoolAIContent, HADOOLAI_OVERVIEW } from './src/utils/hadoolaiKnowledge';
+import { validateReviewInput, validateHelpfulInput } from './src/utils/reviewValidation';
+import {
+  getApprovedReviewsForArticle,
+  insertPendingReview,
+  incrementHelpfulCount,
+  updateReviewStatus,
+  isSupabaseConfigured,
+} from './src/server/supabase';
 
 dotenv.config();
 
@@ -183,7 +191,130 @@ function generateFallbackResponse(userPrompt: string): { text: string; sources?:
 
 // API Health Check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', service: 'HadoolAI AI Assistant API' });
+  res.json({
+    status: 'ok',
+    service: 'HadoolAI AI Assistant API',
+    supabaseConnected: isSupabaseConfigured(),
+  });
+});
+
+// -------------------------------------------------------------
+// Viewer Reviews: GET approved reviews & summary for article
+// -------------------------------------------------------------
+app.get(['/api/reviews', '/.netlify/functions/reviews'], async (req, res) => {
+  try {
+    const articleSlug = (req.query.article as string) || (req.query.article_slug as string) || '';
+
+    if (!articleSlug) {
+      res.status(400).json({ error: 'Missing required query parameter: "article"' });
+      return;
+    }
+
+    const cleanSlug = articleSlug.trim().toLowerCase();
+    if (!/^[a-zA-Z0-9_-]+$/.test(cleanSlug)) {
+      res.status(400).json({ error: 'Invalid article slug format.' });
+      return;
+    }
+
+    const page = Math.max(1, parseInt((req.query.page as string) || '1', 10) || 1);
+    const limit = Math.min(50, Math.max(1, parseInt((req.query.limit as string) || '10', 10) || 10));
+
+    const { reviews, summary, total, isConfigured } = await getApprovedReviewsForArticle(cleanSlug, page, limit);
+
+    const totalPages = Math.ceil(total / limit);
+    const hasMore = page * limit < total;
+
+    res.json({
+      reviews,
+      summary,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+        hasMore,
+      },
+      supabaseConfigured: isConfigured,
+    });
+  } catch (err: any) {
+    console.error('[Server Error - GET /api/reviews]:', err);
+    res.status(500).json({ error: 'Unable to load reviews right now. Please try again later.' });
+  }
+});
+
+// -------------------------------------------------------------
+// Viewer Reviews: POST new review (saves strictly as pending)
+// -------------------------------------------------------------
+app.post(['/api/reviews', '/.netlify/functions/reviews'], async (req, res) => {
+  try {
+    const validation = validateReviewInput(req.body);
+    if (!validation.isValid || !validation.sanitizedPayload) {
+      res.status(422).json({
+        error: validation.errors[0] || 'Invalid review data.',
+        details: validation.errors,
+      });
+      return;
+    }
+
+    const { id, status } = await insertPendingReview(validation.sanitizedPayload);
+
+    res.status(201).json({
+      success: true,
+      message: 'Thank you! Your review has been submitted and is waiting for approval.',
+      reviewId: id,
+      status,
+    });
+  } catch (err: any) {
+    console.error('[Server Error - POST /api/reviews]:', err);
+    res.status(500).json({
+      error: "Sorry, we couldn't submit your review right now. Please try again.",
+    });
+  }
+});
+
+// -------------------------------------------------------------
+// Viewer Reviews: POST helpful feedback increment
+// -------------------------------------------------------------
+app.post(['/api/reviews-helpful', '/.netlify/functions/reviews-helpful'], async (req, res) => {
+  try {
+    const validation = validateHelpfulInput(req.body);
+    if (!validation.isValid || !validation.reviewId || !validation.articleSlug) {
+      res.status(422).json({ error: validation.error || 'Invalid payload.' });
+      return;
+    }
+
+    const result = await incrementHelpfulCount(validation.reviewId, validation.articleSlug);
+    res.json({
+      success: true,
+      helpful_count: result.helpful_count,
+    });
+  } catch (err: any) {
+    console.error('[Server Error - POST /api/reviews-helpful]:', err);
+    res.status(500).json({ error: 'Unable to register helpful feedback right now.' });
+  }
+});
+
+// -------------------------------------------------------------
+// Viewer Reviews: POST moderation status update
+// -------------------------------------------------------------
+app.post('/api/reviews/moderate', async (req, res) => {
+  try {
+    const { review_id, status } = req.body;
+    if (!review_id || !['approved', 'rejected', 'pending'].includes(status)) {
+      res.status(400).json({ error: 'Invalid review_id or status. Allowed: approved, rejected, pending.' });
+      return;
+    }
+
+    const updated = await updateReviewStatus(review_id, status);
+    if (updated) {
+      res.json({ success: true, message: `Review ${review_id} status changed to ${status}.` });
+    } else {
+      res.status(404).json({ error: 'Review not found or could not be updated.' });
+    }
+  } catch (err: any) {
+    console.error('[Server Error - POST /api/reviews/moderate]:', err);
+    res.status(500).json({ error: 'Moderation failed.' });
+  }
 });
 
 // Chatbot endpoint with streaming SSE and Google Search Grounding
