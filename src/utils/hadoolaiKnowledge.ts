@@ -33,6 +33,11 @@ export const HADOOLAI_OVERVIEW = {
   ],
   majorGuides: [
     {
+      title: 'ChatGPT Review 2026: Features, Uses, Benefits and Limitations',
+      path: '/articles/chatgpt-review',
+      summary: 'Complete guide to ChatGPT features, practical uses in content creation, coding, and business productivity, free vs paid pricing plans, advantages, limitations, and safety practices.',
+    },
+    {
       title: 'AI Se Long Video Kaise Banaye? Best AI Video Generators 2026 – Complete Guide',
       path: '/blog/ai-se-long-video-kaise-banaye',
       summary: 'Complete guide to creating 5, 10, or 20-minute long-form AI videos for YouTube, documentaries, storytelling, scripts, scene breakdown, and monetization policies.',

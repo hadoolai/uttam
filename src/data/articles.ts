@@ -1,4 +1,5 @@
 import { Article } from './types';
+import { chatgptReviewArticle } from './chatgptReviewArticle';
 import { aiSeLongVideoKaiseBanayeArticle } from './aiSeLongVideoKaiseBanayeArticle';
 import { youtubeReviewArticle } from './youtubeReviewArticle';
 import { facebookMonetizationArticle } from './facebookMonetizationArticle';
@@ -7,6 +8,7 @@ import { bilibiliAppReviewArticle } from './bilibiliAppReviewArticle';
 import { topUsaTechTrendsArticle } from './topUsaTechTrendsArticle';
 
 export const articlesData: Article[] = [
+  chatgptReviewArticle,
   aiSeLongVideoKaiseBanayeArticle,
   youtubeReviewArticle,
   facebookMonetizationArticle,
@@ -3332,6 +3334,7 @@ Select one method that aligns with your strengths, invest time into learning the
 
 export const getArticleBySlug = (slug: string): Article | undefined => {
   const normalized = slug.toLowerCase().replace(/^\/(articles|guides|comparisons|compare|reviews)\//, '').replace(/^\//, '');
+  if (normalized === 'chatgpt-review-2026') return chatgptReviewArticle;
   return articlesData.find(
     a => a.slug === normalized ||
          a.id === normalized ||
